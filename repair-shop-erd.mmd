@@ -1,0 +1,50 @@
+erDiagram
+    CUSTOMER ||--o{ DEVICE : owns
+    DEVICE ||--o{ REPAIR_TICKET : "has"
+    TECHNICIAN ||--o{ REPAIR_TICKET : handles
+    REPAIR_TICKET ||--o{ TICKET_PART : includes
+    PART ||--o{ TICKET_PART : "used in"
+
+    CUSTOMER {
+        int customer_id PK
+        string full_name
+        string email
+        string phone
+        string address
+    }
+    DEVICE {
+        int device_id PK
+        int customer_id FK
+        string device_type
+        string brand
+        string model
+        string serial_number
+    }
+    TECHNICIAN {
+        int technician_id PK
+        string full_name
+        string specialization
+        string phone
+    }
+    REPAIR_TICKET {
+        int ticket_id PK
+        int device_id FK
+        int technician_id FK
+        string issue_description
+        string status
+        date date_created
+        date date_completed
+        decimal estimated_cost
+    }
+    PART {
+        int part_id PK
+        string part_name
+        string part_type
+        decimal unit_price
+        int stock_quantity
+    }
+    TICKET_PART {
+        int ticket_id PK
+        int part_id PK
+        int quantity_used
+    }
