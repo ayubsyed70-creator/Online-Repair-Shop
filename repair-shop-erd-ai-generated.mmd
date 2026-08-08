@@ -1,0 +1,41 @@
+%% "AI-generated" from the plain-English prompt only:
+%% "Create an ER diagram for an online repair shop: Customer, Device,
+%%  RepairTicket, Technician, Part. A customer owns devices, a device
+%%  has repair tickets, a technician handles repair tickets, and a
+%%  repair ticket uses parts."
+
+erDiagram
+    CUSTOMER ||--o{ DEVICE : owns
+    DEVICE ||--o{ REPAIR_TICKET : has
+    TECHNICIAN ||--o{ REPAIR_TICKET : handles
+    REPAIR_TICKET ||--o{ PART : uses
+
+    CUSTOMER {
+        int customer_id PK
+        string full_name
+        string email
+    }
+    DEVICE {
+        int device_id PK
+        int customer_id FK
+        string device_type
+        string brand
+        string model
+    }
+    TECHNICIAN {
+        int technician_id PK
+        string full_name
+        string specialization
+    }
+    REPAIR_TICKET {
+        int ticket_id PK
+        int device_id FK
+        int technician_id FK
+        string status
+    }
+    PART {
+        int part_id PK
+        int ticket_id FK
+        string part_name
+        decimal unit_price
+    }
