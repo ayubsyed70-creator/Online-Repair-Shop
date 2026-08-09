@@ -29,5 +29,7 @@ junction table resolving the many-to-many between RepairTicket and Part.
 
 ## Status
 [x] ERD (Customer → Device → RepairTicket → Technician / Part)
+
 [x] Products table, 5 rows, SELECT / GROUP BY / JOIN queries
+
 [x] AI-twist comparison — see ai-twist/ai-twist-comparison.md for findings (rounding difference in the GROUP BY query; AI's ERD modeled the   RepairTicket–Part relationship as 1:N instead of M:N, missing the junction table)
